@@ -527,7 +527,7 @@ def sundance_process_root_filesystem(wd: Path, ipsw: IPSW, build_identity: Build
         hfsplus_grow(os_raw_path, (build_identity.minimum_system_partition + JAILBREAK_ROOTFS_MIBS) * 1024 * 1024)
 
         log("unpacking Cydia tarball")
-        hfsplus_untar(os_raw_path, TARBALLS_ROOT / "Cydia.tar", "/")
+        hfsplus_untar(os_raw_path, RESOURCES_ROOT / "Cydia.tar", "/")
 
         with tempfile.NamedTemporaryFile() as f:
             hfsplus_add(os_raw_path, Path(f.name), "/.cydia_no_stash")
@@ -662,7 +662,6 @@ def process(args):
 
 SCRIPT_ROOT = Path(__file__).parent
 RESOURCES_ROOT = Path(__file__).parent / "resources"
-TARBALLS_ROOT = Path(__file__).parent / "tarballs"
 
 DEFAULT_KERNEL = SCRIPT_ROOT / "artifacts" / "kernelcache.n18ap.bin"
 DEFAULT_JAILBROKEN_KERNEL = SCRIPT_ROOT / "artifacts" / "kernelcache.jailbroken.n18ap.bin"
